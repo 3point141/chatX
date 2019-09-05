@@ -1,0 +1,25 @@
+<h1 align="center">Register new user</h1>
+
+<div *ngIf="userNameAvailable==false" class="alert alert-danger">
+  <p>UserName Taken</p>
+</div>
+
+<div align="center" style="margin-top: 10%">
+<form (ngSubmit)="registerNewUser()">
+  <div class="row">
+    <div class="col">
+      <label for="username">Username</label>
+      <input class="username" name="username" id="username" required="required" [(ngModel)]="register.username"
+      placeholder="New Username" type="text" (keyup)="checkAvailability()">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="password">Password</label>
+      <input class="password" name="password" id="password" required="required" [(ngModel)]="register.password"
+      placeholder="password" type="password">
+    </div>
+  </div>
+  <input *ngIf="userNameAvailable" type="submit" value="Register">
+</form>
+</div>

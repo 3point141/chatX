@@ -1,0 +1,12 @@
+<p>chat works!</p>
+
+<div *ngFor="let chat of chats">
+  <p>{{chat.username}} : {{chat.message}}</p>
+</div>
+
+<form (ngSubmit)="sendNewMessage()">
+  <label for="message">Message : </label><input type="message" placeholder="Your Message" name="message" id="message" [(ngModel)]="chat.message">
+  <input type="submit" value="Send Message">
+</form>
+
+<button (click)="logout()">LogOut</button>

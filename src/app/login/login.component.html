@@ -1,0 +1,23 @@
+<h1 align="center">Login</h1>
+
+<div class="container-fluid">
+  <form (ngSubmit)="validateLogin()">
+  <div class="row">
+    <div class="col">
+    <label>UserName</label>
+    <input class="username" id="username" name="username" placeholder="username" required="required" type="text"
+    [(ngModel)]="user.username">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Password</label>
+      <input class="password" id="password" name="password" placeholder="password" type="password" required="required"
+      [(ngModel)]="user.password">
+    </div>
+  </div>
+  <input type="submit">
+  </form>
+</div>
+
+
