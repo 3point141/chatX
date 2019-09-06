@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -14,6 +15,12 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
     this.getAllMessages();
   }
+
+
+  checkMessage() {
+      setTimeout(this.getAllMessages,2000);
+  }
+
 
   chat:Chat = {
     username:sessionStorage.getItem('username'),
@@ -40,9 +47,16 @@ export class ChatComponent implements OnInit {
   getAllMessages(){
     let url = 'http://localhost:8080/history';
     this.http.get(url).subscribe((data:any)=>{
-      this.chats = data;
+      if(data!==this.chats)
+      {
+        this.chats = data;
+        this.ngOnInit();
+      }
+      else
+        this.checkMessage();
     })
   }
+
 }
 
 export interface Chat {
